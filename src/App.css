@@ -73,6 +73,7 @@ main {
   margin-bottom: 16px;
   justify-content: space-between;
   flex-grow: 1;
+  gap: 0.5em;
 }
 
 .card img {
@@ -81,7 +82,7 @@ main {
 }
 
 .card h2 {
-  font-size: 20px;right
+  font-size: 20px;
   flex-grow: 1;
 }
 
@@ -110,6 +111,7 @@ main {
 
 .country img {
   width: 24px;
+  border-radius: 0;
 }
 
 button {
@@ -126,7 +128,7 @@ button {
 
 button.follow {
   background-color: var(--c-p);
-  color: var(--c-p-c);right
+  color: var(--c-p-c);
 }
 
 button.follow:hover {

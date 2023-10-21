@@ -1,218 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import PropTypes from "prop-types";
-
-const users = [
-  {
-    createdAt: "2023-08-11T06:04:32.270Z",
-    name: "Ms. Tara Waters",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/866.jpg",
-    country: "FJ",
-    phone: "986-875-9380",
-    isFollowed: false,
-    job: "Officer",
-    id: "1",
-  },
-  {
-    createdAt: "1996-04-27T13:01:53.907Z",
-    name: "Maria Waters",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1071.jpg",
-    country: "MK",
-    phone: "918-419-3842",
-    isFollowed: false,
-    job: "Consultant",
-    id: "2",
-  },
-  {
-    createdAt: "2050-07-26T19:53:03.634Z",
-    name: "Mr. Olivia Dibbert",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/410.jpg",
-    country: "KZ",
-    phone: "559-467-5820",
-    isFollowed: false,
-    job: "Engineer",
-    id: "3",
-  },
-  {
-    createdAt: "2028-11-05T22:27:27.464Z",
-    name: "Martin McCullough",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/213.jpg",
-    country: "GB",
-    phone: "981-541-3913",
-    isFollowed: false,
-    job: "Executive",
-    id: "4",
-  },
-  {
-    createdAt: "2038-03-09T05:00:41.213Z",
-    name: "Yvonne Hagenes",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/75.jpg",
-    country: "SO",
-    phone: "795-564-9848",
-    isFollowed: false,
-    job: "Associate",
-    id: "5",
-  },
-  {
-    createdAt: "2078-08-19T13:54:07.962Z",
-    name: "Julian Hartmann DDS",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/901.jpg",
-    country: "MG",
-    phone: "415-748-4884",
-    isFollowed: false,
-    job: "Supervisor",
-    id: "6",
-  },
-  {
-    createdAt: "2093-12-20T17:40:39.562Z",
-    name: "Moses Stanton",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/494.jpg",
-    country: "EC",
-    phone: "328-268-7768",
-    isFollowed: false,
-    job: "Agent",
-    id: "7",
-  },
-  {
-    createdAt: "2083-05-09T11:27:04.027Z",
-    name: "Toni Champlin",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/492.jpg",
-    country: "CL",
-    phone: "853-805-4014",
-    isFollowed: false,
-    job: "Designer",
-    id: "8",
-  },
-  {
-    createdAt: "2086-05-28T07:30:39.311Z",
-    name: "Mrs. Ellis Johnson",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/512.jpg",
-    country: "TG",
-    phone: "496-435-8667",
-    isFollowed: false,
-    job: "Agent",
-    id: "9",
-  },
-  {
-    createdAt: "2016-06-18T12:15:12.165Z",
-    name: "Lora Brekke",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/645.jpg",
-    country: "GN",
-    phone: "235-205-9947",
-    isFollowed: false,
-    job: "Liaison",
-    id: "10",
-  },
-  {
-    createdAt: "2096-09-18T23:37:52.620Z",
-    name: "Christian Walter",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1235.jpg",
-    country: "BL",
-    phone: "459-432-8345",
-    isFollowed: false,
-    job: "Planner",
-    id: "11",
-  },
-  {
-    createdAt: "2097-10-21T06:15:54.408Z",
-    name: "Wendy Bednar",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/598.jpg",
-    country: "MQ",
-    phone: "827-550-7395",
-    isFollowed: false,
-    job: "Facilitator",
-    id: "12",
-  },
-  {
-    createdAt: "2053-10-10T19:25:01.118Z",
-    name: "Hubert Ebert I",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/637.jpg",
-    country: "HT",
-    phone: "838-773-8582",
-    isFollowed: false,
-    job: "Consultant",
-    id: "13",
-  },
-  {
-    createdAt: "2010-05-06T01:02:55.116Z",
-    name: "Adrienne Pagac DDS",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/156.jpg",
-    country: "GS",
-    phone: "954-620-3069",
-    isFollowed: false,
-    job: "Representative",
-    id: "14",
-  },
-  {
-    createdAt: "2096-03-21T02:43:11.639Z",
-    name: "Katherine Marquardt",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/600.jpg",
-    country: "BE",
-    phone: "768-865-2064",
-    isFollowed: false,
-    job: "Coordinator",
-    id: "15",
-  },
-  {
-    createdAt: "2078-09-28T05:25:11.835Z",
-    name: "Mr. Ruben Nienow",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/500.jpg",
-    country: "HK",
-    phone: "823-418-2280",
-    isFollowed: false,
-    job: "Designer",
-    id: "16",
-  },
-  {
-    createdAt: "2017-03-09T18:27:02.980Z",
-    name: "Amanda Gerhold",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/761.jpg",
-    country: "SE",
-    phone: "252-891-3215",
-    isFollowed: false,
-    job: "Supervisor",
-    id: "17",
-  },
-  {
-    createdAt: "2032-01-22T18:36:51.577Z",
-    name: "Darlene Hegmann",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1215.jpg",
-    country: "NP",
-    phone: "631-273-8635",
-    isFollowed: false,
-    job: "Strategist",
-    id: "18",
-  },
-  {
-    createdAt: "2067-04-29T02:11:44.905Z",
-    name: "Esther Purdy",
-    avatar:
-      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/497.jpg",
-    country: "KG",
-    phone: "316-889-5489",
-    isFollowed: false,
-    job: "Orchestrator",
-    id: "19",
-  },
-];
+import { getAllUsers, updateUser, deleteUser } from "./utils/api-utils";
+import { useEffect } from "react";
 
 /**
  *  This component will show a loading animation while the image is loading
@@ -244,9 +34,28 @@ LoadingVisibleImage.propTypes = {
 };
 
 function App() {
-  const [usersArray, setUsersArray] = useState(users);
+  const [usersArray, setUsersArray] = useState([]);
 
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    getAllUsers(abortController.signal)
+      .then((users) => {
+        setUsersArray(users);
+      })
+      .catch((e) => {
+        // only log the error if it is not an abort error
+        // abort errors are expected
+        if (e.name !== "AbortError") console.error(e.message);
+      });
+
+    return () => {
+      // abort the fetch request when the component unmounts
+      abortController.abort();
+    };
+  }, []);
 
   return (
     <>
@@ -283,12 +92,32 @@ function App() {
                 <span>{user.job}</span>
               </div>
               <div className="country">
-                <img src={`https://flagsapi.com/${user.country}/flat/24.png`} />
+                <img
+                  src={`https://flagsapi.com/${user.country}/flat/24.png`}
+                  onError={(e) => {
+                    // in case the image fails to load
+                    // probably because the flag does not exist
+                    // we can replace it with a placeholder
+                    // e this is the event object
+                    // e.target is the element that triggered the event (this very image)
+                    // e.target.src is the src attribute of the image
+                    // meaning if there is a loading error we can replace the src
+                    e.target.src = `https://placehold.co/24x16/333/fff?text=${user.country}`;
+                  }}
+                />
                 <span>{user.country}</span>
               </div>
               <div>
                 <button
                   onClick={() => {
+                    const updatedUser = {
+                      isFollowed: !user.isFollowed,
+                    };
+
+                    // save the original array
+                    // we use this to update the state optimistically
+                    // then if the update request fails we can revert the state
+                    let original = usersArray.map((u) => ({ ...u }));
                     // using map to create a new array
                     const newArray = usersArray.map((u) => {
                       if (u.id === user.id) {
@@ -301,6 +130,15 @@ function App() {
                     // const newArray = [...usersArray];
                     // newArray[i].isFollowed = !newArray[i].isFollowed;
 
+                    // update on the server
+                    updateUser(user.id, updatedUser).catch((e) => {
+                      // print the error message to the console
+                      console.error(e.message);
+                      // if the update fails, revert the state
+                      setUsersArray(original);
+                    });
+
+                    // optimistic update
                     setUsersArray(newArray);
                   }}
                   className={user.isFollowed ? "unfollow" : "follow"}
@@ -309,7 +147,19 @@ function App() {
                 </button>
                 <button
                   onClick={() => {
-                    setUsersArray(usersArray.filter((u) => u.id !== user.id));
+                    const userToDelete = usersArray.find(
+                      (u) => u.id === user.id
+                    );
+                    const newArray = [...usersArray];
+                    newArray.splice(i, 1);
+                    setUsersArray(newArray);
+
+                    deleteUser(userToDelete.id).catch((e) => {
+                      console.error(e.message);
+                      newArray.splice(i, 0, userToDelete);
+
+                      setUsersArray([...newArray]);
+                    });
                   }}
                   className="block"
                 >

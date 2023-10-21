@@ -1,0 +1,185 @@
+header {
+  background-color: var(--c-b-300);
+  padding: 32px 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.max-width-container {
+  max-width: 1024px;
+  margin: auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--c-p);
+  padding: 0;
+}
+
+header form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header form input {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 300px;
+  margin-right: 16px;
+  background-color: var(--c-b-100);
+  flex-grow: 1;
+}
+
+header form input:focus {
+  outline: 1px solid var(--c-p);
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px 0;
+  max-width: 1024px;
+  margin: auto;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--c-b-300);
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  margin: 16px 0;
+  width: 300px;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card img {
+  width: 62px;
+  border-radius: 50%;
+}
+
+.card h2 {
+  font-size: 20px;right
+  flex-grow: 1;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 1em;
+  border-bottom: 1px solid var(--c-b-100);
+  padding-bottom: 16px;
+}
+
+.contact:nth-child(2) {
+  border-top: 1px solid var(--c-b-100);
+  padding-top: 16px;
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--c-b-100);
+  padding-bottom: 16px;
+}
+
+.country img {
+  width: 24px;
+}
+
+button {
+  text-transform: uppercase;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+button.follow {
+  background-color: var(--c-p);
+  color: var(--c-p-c);right
+}
+
+button.follow:hover {
+  background-color: var(--c-p-f);
+}
+
+button.follow:focus {
+  outline: none;
+}
+
+button.unfollow {
+  background-color: var(--c-error);
+  color: var(--c-p-c);
+}
+
+button.unfollow:hover {
+  background-color: #cc3333;
+  color: white;
+}
+
+button.block {
+  margin-top: 6px;
+  color: var(--c-error);
+}
+
+button.block:hover {
+  color: #cc3333;
+  background-color: #cc333355;
+}
+
+.loading {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid var(--c-b-300);
+  border-top-color: var(--c-p);
+  animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+  main {
+    padding: 0px 8px;
+  }
+}

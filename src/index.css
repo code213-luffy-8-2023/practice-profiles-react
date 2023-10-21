@@ -1,0 +1,28 @@
+:root {
+  --c-p: #3abff8;
+  --c-p-f: #18b4f777;
+  --c-p-c: #182730;
+
+  --c-b-100: #efefef;
+  --c-b-200: #eeeeee;
+  --c-b-300: #ffffff;
+
+  --c-b-content: #333;
+
+  --c-error: #fb6f84;
+}
+
+body {
+  background-color: var(--c-b-100);
+  color: var(--c-b-content);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 1px;
+}
